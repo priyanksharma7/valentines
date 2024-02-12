@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine's Day Message</title>
+<style>
+  body {
+    text-align: center; /* Center-aligns all content */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+  }
+  img {
+    max-width: 100%; /* Makes image sizing dynamic */
+    height: auto;
+    display: block; /* Removes bottom margin/spacing */
+    margin: 0 auto; /* Centers the image horizontally */
+  }
+  button {
+    width: 15%;
+    display: block;
+    margin: 10px auto; /* Adds some space around buttons */
+    padding: 10px 20px; /* Makes buttons larger and more clickable */
+    border: none; /* Removes border */
+    border-radius: 5px; /* Rounds the corners of the button */
+    background-color: #007bff; /* A pleasant blue */
+    color: white; /* White text */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    font-size: 16px; /* Increases font size for better readability */
+    transition: background-color 0.3s; /* Smooth background color transition on hover */
+  }
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+
+  #message {
+    font-size: 24px; /* Adjusts the font size to be larger */
+    font-weight: bold; /* Makes the font weight bold */
+    margin: 20px 0; /* Adds some vertical spacing around the message */
+  }
+
+</style>
+</head>
+<body>
+
+<div id="gifContainer">
+  <img id="initialGif" src="static/gif1.gif" alt="Bear Love GIF">
+</div>
+
+<p id="message">Will you be my Valentine?</p>
+
+<button id="yesButton" onclick="showLoveResponse()">Yes!</button>
+<button id="noButton" onclick="declineLove()">No</button>
+
+<script>
+function showLoveResponse() {
+    document.getElementById('initialGif').src = 'static/gif2.gif';
+    document.getElementById('message').innerText = 'Ok Yay!!!';
+    // Hide the buttons
+    document.getElementById('yesButton').style.display = 'none';
+    document.getElementById('noButton').style.display = 'none';
+}
+
+document.getElementById('noButton').addEventListener('mouseover', function(e) {
+    const button = e.target;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const newX = Math.random() * (screenWidth - button.offsetWidth);
+    const newY = Math.random() * (screenHeight - button.offsetHeight);
+
+    button.style.position = 'absolute';
+    button.style.left = `${newX}px`;
+    button.style.top = `${newY}px`;
+});
+</script>
+
+</body>
+</html>
